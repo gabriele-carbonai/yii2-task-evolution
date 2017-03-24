@@ -1,0 +1,24 @@
+{
+    "name": "gomonkey/yii2-task-evolution",
+    "description": "Help developing with task evolution",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," task"," developer"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "gabriele carbonai",
+            "email": "info@gomonkey.it"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "gomonkey\\tastevolution\\": ""
+        }
+    }
+}
+
+
