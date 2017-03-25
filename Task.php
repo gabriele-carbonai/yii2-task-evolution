@@ -5,27 +5,30 @@ namespace gomonkey\taskevolution;
 
 use Yii;
 use yii\base\Widget;
-
+use yii\web\Request;
 
 class Task extends Widget
 {
    
-
-    /**
-     * @var array the configuration options for the bootstrap dialog (applicable when [[useNative]] is `false`). You can
-     * set the configuration settings as key value pairs that can be recognized by the BootstrapDialog plugin.
-     */
-    public $options = [];
-
-   
+    public $ipAddress = ['127.0.0.1', '::1'];
+    
+    public $users = false;
+	
+	public $active = true;
 
     /**
      * @inheritdoc
      */
     public function run()
     { 
-        $this->initOptions();
-        $this->registerAssets();
+	    if( $this->active === true &&  in_array(Yii::$app->getRequest()->getUserIP(),  $this->ipAddress) ){ 
+		  
+			    if( $this->users === false || ( $this->users === true && !Yii::$app->user->isGuest )  ){
+				    $this->initOptions();
+			        $this->registerAssets();
+			        return $this->render('task');
+	        }
+        }
     }
 
     /**
@@ -41,6 +44,9 @@ class Task extends Widget
      */
     public function registerAssets()
     {
-       
+	    $view = $this->getView();
+		TaskAsset::register($view);
+	    
+	     
     }
 }
