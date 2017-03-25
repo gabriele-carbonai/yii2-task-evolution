@@ -37,7 +37,7 @@ Once the extension is installed, simply use it in your code by  :
 ```php
 <?php 
 echo Task::widget([
-	'ipAddress' => ['::1', '89.176.41.130', '89.176.41.120'],
+	'ipAddress' => ['::1', '127.0.0.1'],
 	'users' => false,
 	'active' => true,
 ]);; 
