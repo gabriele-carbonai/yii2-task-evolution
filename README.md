@@ -22,10 +22,26 @@ or add
 to the require section of your `composer.json` file.
 
 
+Update database schema
+----------------------
+
+You need to do is updating your database schema by applying the migrations. Make sure that you have properly configured db application component and run the following command:
+
+` $ php yii migrate/up --migrationPath=@vendor/gomonkey/yii2-task-evolution/migration `
+
 Usage
 -----
 
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \gomonkey\tastevolution\AutoloadExample::widget(); ?>```
+<?php 
+echo Task::widget([
+	'ipAddress' => ['::1', '89.176.41.130', '89.176.41.120'],
+	'users' => false,
+	'active' => true,
+]);; 
+?>```
+
+
+php yii migrate/up --migrationPath=@vendor/gomonkey/yii2-task-evolution/migration
