@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace gomonkey\taskevolution\models;
 
 use Yii;
 
@@ -14,11 +14,22 @@ use Yii;
  * @property string $route
  * @property int $task_type
  * @property string $task_start
- * @property string $task_end
+ * @property string $deadline
  * @property int $active
  */
 class TaskEvolution extends \yii\db\ActiveRecord
 {
+	
+	public function behaviors()
+	{
+	    return [
+	        'sortable' => [
+	            'class' => \kotchuprik\sortable\behaviors\Sortable::className(),
+	            'query' => self::find(),
+	        ],
+	    ];
+	}
+	
     /**
      * @inheritdoc
      */
@@ -33,10 +44,10 @@ class TaskEvolution extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'task_type', 'active'], 'integer'],
-            [['title', 'route', 'active'], 'required'],
+            [['user_id', 'task_type', 'completed'], 'integer'],
+            [['title', 'route', 'completed'], 'required'],
             [['description'], 'string'],
-            [['task_start', 'task_end'], 'safe'],
+            [['task_start', 'deadline', 'order'], 'safe'],
             [['title', 'route'], 'string', 'max' => 250],
         ];
     }
@@ -47,15 +58,15 @@ class TaskEvolution extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('task', 'ID'),
-            'user_id' => Yii::t('task', 'User ID'),
-            'title' => Yii::t('task', 'Title'),
-            'description' => Yii::t('task', 'Description'),
-            'route' => Yii::t('task', 'Route'),
-            'task_type' => Yii::t('task', 'Task Type'),
-            'task_start' => Yii::t('task', 'Task Start'),
-            'task_end' => Yii::t('task', 'Task End'),
-            'active' => Yii::t('task', 'Active'),
+            'id' => Yii::t('app', 'ID'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'title' => Yii::t('app', 'Title'),
+            'description' => Yii::t('app', 'Description'),
+            'route' => Yii::t('app', 'Route'),
+            'task_type' => Yii::t('app', 'Task Type'),
+            'task_start' => Yii::t('app', 'Task Start'),
+            'deadline' => Yii::t('app', 'Deadline'),
+            'active' => Yii::t('app', 'Active'),
         ];
     }
 }

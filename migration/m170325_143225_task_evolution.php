@@ -15,7 +15,8 @@ class m170325_143225_task_evolution extends Migration
             'task_type' => $this->smallInteger(1),
             'task_start' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'task_end' => $this->timestamp(),
-            'active' => $this->smallInteger(1)->defaultValue(1)
+            'active' => $this->smallInteger(1)->defaultValue(1),
+            'ordero' => $this->smallInteger(6)->notNull()
         ]);
     }
 

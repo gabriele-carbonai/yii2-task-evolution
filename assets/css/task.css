@@ -177,6 +177,17 @@
 	padding: 10px;
 }
 
+.task-panel-views{
+	position: fixed;
+	width: 50%;
+	height: 100%;
+	background-color: #fff;
+	top: 0;
+	left: -50%;
+	z-index: 1031;
+	padding: 10px;
+}
+
 .task-wrapper{
 	width: 100%;
 	height: 100%;
@@ -199,3 +210,7 @@
     animation: fadeIn 1s;
 }
 	
+.tab-content{
+	max-height: 80vh;
+    overflow: scroll;
+}

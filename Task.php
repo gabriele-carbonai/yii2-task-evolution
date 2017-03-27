@@ -6,7 +6,7 @@ namespace gomonkey\taskevolution;
 use Yii;
 use yii\base\Widget;
 use yii\web\Request;
-use  gomonkey\taskevolution\Translation;
+use gomonkey\taskevolution\Translation;
 
 class Task extends Widget
 {
